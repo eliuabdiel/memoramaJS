@@ -1,14 +1,14 @@
 function constructor(){
     totalCards = [
-        {},
-        {},
-        {},
-        {},
-        {},
-        {},
-        {},
-        {},
-
+        {src: "img/christian.jpg"},
+        {src: "img/christian.jpg"},
+        {src: "img/flyan.jpg"},
+        {src: "img/flyan.jpg"},
+        {src: "img/zinedin.jpg"},
+        {src: "img/zinedin.jpg"},
+        {src: "img/pana.jpg"},
+        {src: "img/pana.jpg"},
+        
     ];
     numberCards = 0;
     verifyCards = [];
@@ -22,9 +22,6 @@ function events(){
     } );
 }
 async function loadScreen(){
-    const response = await fetch('../memo.json');
-    const data = await response.json();
-    totalCards = data;
     if (totalCards.length > 0){
         totalCards.sort(order);
         function order(a,b){

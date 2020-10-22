@@ -1,6 +1,6 @@
 html {
      font-size: 62.5%;
-     font-family: 'Tomorrow', sans-serif;
+     font-family: sans-serif;
      box-sizing: border-box;
 }
 
@@ -67,4 +67,11 @@ div.pantalla-bloqueada {
      background-color: rgba(0,0,0,0.75);
      z-index: 5;
      display: none;
+}
+h2.mensaje {
+     font-size: 5rem;
+     color: white;
+     z-index: 10;
+     text-align: center;
+     margin: 32rem 0;
 }
