@@ -3,11 +3,12 @@
 <head>
      <meta charset="UTF-8">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link href="https://fonts.googleapis.com/css?family=Tomorrow:400,700&display=swap" rel="stylesheet">
      <link rel="stylesheet" href="css/style.css">
      <title>Coderama</title>
+     
 </head>
 <body>
+     <script src="js/script.js"></script>
      <div class="contenedor-general">
           <h1 class="titulo">Memorama</h1>
           <div class="contenedor-tarjetas" id="card-container">
@@ -15,9 +16,15 @@
           </div> 
           <div class="pantalla-bloqueada" id="winner-screen">
                <h2 class="mensaje">¡Has Ganado!</h2>
+               <div class="center-button">
+                    <button class="play-again-button" onclick="playAgain()">
+                         Volver a Jugar!
+                    </button>
+               </div>
+               
           </div>
      </div>
      
-     <script src="js/script.js"></script>
+     
 </body>
 </html>

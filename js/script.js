@@ -8,25 +8,28 @@ function constructor(){
         {src: "img/zinedin.jpg"},
         {src: "img/pana.jpg"},
         {src: "img/pana.jpg"},
-        
     ];
+    
     numberCards = 0;
     verifyCards = [];
     correctCards = 0;
     previousCard = null;
-    events();
-}
-function events(){
-    window.addEventListener('DOMContentLoaded', () => {
-        loadScreen();
-    } );
+    loadScreen();
 }
 async function loadScreen(){
     if (totalCards.length > 0){
-        totalCards.sort(order);
-        function order(a,b){
-            return Math.random() - 0.5;
+        //The Correct Way — Fisher-Yates Algorithm to randomize an array 
+        for(let i = totalCards.length - 1; i > 0; i--){
+            const j = Math.floor(Math.random() * i)
+            const temp = totalCards[i]
+            totalCards[i] = totalCards[j]
+            totalCards[j] = temp
         }
+        
+        //totalCards.sort();
+        // function order(a,b){
+        //     return Math.random() - 0.5;
+        // }
     }
     numberCards = totalCards.length;
 
@@ -47,7 +50,7 @@ function start(){
 }
 function clickCard(e){
     if (previousCard == e.target && verifyCards.length != 0 ){
-        console.log('no te crashees consola xfabor')
+        console.log("don't crash console pls")
     } else {
         transformCardsToImage(e);
         let sourceImage = e.target.childNodes[0].getAttribute("src");
@@ -64,7 +67,7 @@ function transformCardsToImage(e){
     
 }
 function transformImagetoCards(){
-    const cards = document.querySelectorAll('.tarjeta');
+    let cards = document.querySelectorAll('.tarjeta');
     cards.forEach(card => {
         let sourceImage = card.childNodes[0].getAttribute("src");
         if(sourceImage == verifyCards[0] || sourceImage == verifyCards[1]){
@@ -93,7 +96,20 @@ function compareCards(e){
         }
     }
 }
+function playAgain(){
+    let cards = document.querySelectorAll('.tarjeta');
+    cards.forEach(card => {
+        card.style.backgroundImage = 'url(../img/default.png)';
+        card.style.backgroundColor='none';
+        card.childNodes[0].style.display = 'none';
+    })
+    document.getElementById("winner-screen").style.display = 'none';
+    constructor();
+}
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
-constructor();
+window.addEventListener('DOMContentLoaded', (e) => {
+    constructor();
+});
+
