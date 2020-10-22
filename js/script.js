@@ -79,6 +79,7 @@ async function transformImagetoCards(){
 async function compareCards(e){
         if(verifyCards.length == 2){
         if (verifyCards[0] == verifyCards[1]){
+            await lockCorrectCards();
             verifyCards= [];
             correctCards+=2;
             console.log(correctCards)
@@ -94,6 +95,15 @@ async function compareCards(e){
             });
         }
     }
+}
+async function lockCorrectCards(){
+    let cards = document.querySelectorAll('.tarjeta');
+    cards.forEach(card => {
+        let sourceImage = card.childNodes[0].getAttribute("src");
+        if(sourceImage == verifyCards[0] && sourceImage == verifyCards[1]){
+            card.style.pointerEvents = 'none';
+        } 
+    })
 }
 async function playAgain(){
     let cards = document.querySelectorAll('.tarjeta');
