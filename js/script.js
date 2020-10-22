@@ -61,8 +61,7 @@ async function clickCard(e){
     }
 }
 async function transformCardsToImage(e){
-    e.target.style.backgroundImage= 'none';
-    e.target.style.backgroundColor='white';
+    e.target.style.backgroundSize= '0%';
     e.target.childNodes[0].style.display = 'block';
     
 }
@@ -71,8 +70,7 @@ async function transformImagetoCards(){
     cards.forEach(card => {
         let sourceImage = card.childNodes[0].getAttribute("src");
         if(sourceImage == verifyCards[0] || sourceImage == verifyCards[1]){
-            card.style.backgroundImage = 'url(../img/default.png)';
-            card.style.backgroundColor ='none';
+            card.style.backgroundSize= '100%';
             card.childNodes[0].style.display = 'none';
         } 
     })
