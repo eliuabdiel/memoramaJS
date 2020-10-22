@@ -16,7 +16,7 @@ function constructor(){
     previousCard = null;
     loadScreen();
 }
-async function loadScreen(){
+function loadScreen(){
     if (totalCards.length > 0){
         //The Correct Way — Fisher-Yates Algorithm to randomize an array 
         for(let i = totalCards.length - 1; i > 0; i--){
@@ -40,7 +40,7 @@ async function loadScreen(){
     document.getElementById("card-container").innerHTML = html;
     start();
 }
-function start(){
+async function start(){
     const cards = document.querySelectorAll('.tarjeta');
     cards.forEach(card => {
         card.addEventListener('click', e => {
@@ -48,11 +48,11 @@ function start(){
         })
     })
 }
-function clickCard(e){
+async function clickCard(e){
     if (previousCard == e.target && verifyCards.length != 0 ){
         console.log("don't crash console pls")
     } else {
-        transformCardsToImage(e);
+        await transformCardsToImage(e);
         let sourceImage = e.target.childNodes[0].getAttribute("src");
         verifyCards.push(sourceImage);
         
@@ -60,25 +60,25 @@ function clickCard(e){
         previousCard = e.target;
     }
 }
-function transformCardsToImage(e){
+async function transformCardsToImage(e){
     e.target.style.backgroundImage= 'none';
     e.target.style.backgroundColor='white';
     e.target.childNodes[0].style.display = 'block';
     
 }
-function transformImagetoCards(){
+async function transformImagetoCards(){
     let cards = document.querySelectorAll('.tarjeta');
     cards.forEach(card => {
         let sourceImage = card.childNodes[0].getAttribute("src");
         if(sourceImage == verifyCards[0] || sourceImage == verifyCards[1]){
             card.style.backgroundImage = 'url(../img/default.png)';
-            card.style.backgroundColor='none';
+            card.style.backgroundColor ='none';
             card.childNodes[0].style.display = 'none';
         } 
     })
 }
 
-function compareCards(e){
+async function compareCards(e){
         if(verifyCards.length == 2){
         if (verifyCards[0] == verifyCards[1]){
             verifyCards= [];
@@ -89,14 +89,14 @@ function compareCards(e){
         } else {
             document.getElementById("card-container").style.pointerEvents = 'none';
             sleep(200).then(() => { 
-                transformImagetoCards(); 
+                await transformImagetoCards(); 
                 verifyCards = [];
                 document.getElementById("card-container").style.pointerEvents = 'auto';
             });
         }
     }
 }
-function playAgain(){
+async function playAgain(){
     let cards = document.querySelectorAll('.tarjeta');
     cards.forEach(card => {
         card.style.backgroundImage = 'url(../img/default.png)';
