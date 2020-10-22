@@ -68,7 +68,7 @@ async function transformCardsToImage(e){
 }
 async function transformImagetoCards(){
     let cards = document.querySelectorAll('.tarjeta');
-    cards.forEach(card => {
+    await cards.forEach(card => {
         let sourceImage = card.childNodes[0].getAttribute("src");
         if(sourceImage == verifyCards[0] || sourceImage == verifyCards[1]){
             card.style.backgroundImage = 'url(../img/default.png)';
