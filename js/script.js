@@ -68,7 +68,7 @@ async function transformCardsToImage(e){
 }
 async function transformImagetoCards(){
     let cards = document.querySelectorAll('.tarjeta');
-    await cards.forEach(card => {
+    cards.forEach(card => {
         let sourceImage = card.childNodes[0].getAttribute("src");
         if(sourceImage == verifyCards[0] || sourceImage == verifyCards[1]){
             card.style.backgroundImage = 'url(../img/default.png)';
@@ -83,6 +83,7 @@ async function compareCards(e){
         if (verifyCards[0] == verifyCards[1]){
             verifyCards= [];
             correctCards+=2;
+            console.log(correctCards)
             if(correctCards == numberCards){
                 document.getElementById("winner-screen").style.display = 'block';
             }
