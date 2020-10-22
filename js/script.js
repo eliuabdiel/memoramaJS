@@ -88,7 +88,7 @@ async function compareCards(e){
             }
         } else {
             document.getElementById("card-container").style.pointerEvents = 'none';
-            sleep(200).then(() => { 
+            sleep(200).then(async () => { 
                 await transformImagetoCards(); 
                 verifyCards = [];
                 document.getElementById("card-container").style.pointerEvents = 'auto';
@@ -98,7 +98,7 @@ async function compareCards(e){
 }
 async function playAgain(){
     let cards = document.querySelectorAll('.tarjeta');
-    cards.forEach(card => {
+    await cards.forEach(card => {
         card.style.backgroundImage = 'url(../img/default.png)';
         card.style.backgroundColor='none';
         card.childNodes[0].style.display = 'none';
