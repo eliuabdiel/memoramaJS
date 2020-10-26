@@ -20,7 +20,6 @@ div.contenedor-general {
      width: 80%;
      max-width: 100%;
      margin: 0 auto;
-     height: 100vh;
 }
 
 h1.titulo {
@@ -48,6 +47,7 @@ div.tarjeta {
      box-shadow: 4px 6px 17px -4px rgba(0,0,0,0.75);
      margin: 2rem 2rem;
      border-radius: 1rem;
+     cursor: pointer;
 }
 
 img.tarjeta-img {
@@ -66,6 +66,7 @@ div.pantalla-bloqueada {
      background-color: rgba(0,0,0,0.75);
      z-index: 5;
      display: none;
+     justify-content: space-around;
 }
 h2.mensaje {
      font-size: 5rem;
@@ -82,7 +83,7 @@ div.center-button {
      -ms-transform: translate(-50%, -50%);
      transform: translate(-50%, -50%);
 }
-button {
+button.play-again-button {
      background-color: white;
      border-color: black;
      border-radius: 10px;
@@ -93,7 +94,15 @@ button {
      cursor: pointer;
      padding: 10px;
 }
-button hover {
+.play-again-button:hover {
      background-color: black;
      color: white;
 }
+@keyframes imagebulger {
+     0% {
+       display: none;
+     }
+     100% {
+          display: block;
+     }
+   }

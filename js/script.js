@@ -8,6 +8,12 @@ function constructor(){
         {src: "img/zinedin.jpg"},
         {src: "img/pana.jpg"},
         {src: "img/pana.jpg"},
+        {src: "img/matador.jpeg"},
+        {src: "img/matador.jpeg"},
+        {src: "img/olivas.jpeg"},
+        {src: "img/olivas.jpeg"},
+        {src: "img/mazatlanfc.jpeg"},
+        {src: "img/mazatlanfc.jpeg"}
     ];
     
     numberCards = 0; // total number of cards
@@ -93,7 +99,7 @@ async function compareCards(e){
             }
         } else { 
             document.getElementById("card-container").style.pointerEvents = 'none'; //disabling to valid delay
-            sleep(200).then(async () => { //will do the lines below after .2 seconds pd. remember that the lines after this function will be ejecuted before the ones that are in the function
+            sleep(500).then(async () => { //will do the lines below after .2 seconds pd. remember that the lines after this function will be ejecuted before the ones that are in the function
                 await transformImagetoCards(); 
                 verifyCards = []; //empty the verifier
                 document.getElementById("card-container").style.pointerEvents = 'auto'; //enabling after valid delay
@@ -125,7 +131,7 @@ function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 //page is loaded
-window.addEventListener('DOMContentLoaded', (e) => {
+window.addEventListener('DOMContentLoaded', () => {
     constructor();
 });
 
